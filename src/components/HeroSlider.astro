@@ -3,27 +3,27 @@
 import { site } from '../data/site';
 ---
 
-<section class="relative w-full overflow-hidden" style="height: min(90vh, 700px);" aria-label="Présentation">
+<section class="relative w-full overflow-hidden" style="height: min(92vh, 720px);" aria-label="Présentation">
   <div class="swiper hero-swiper h-full">
     <div class="swiper-wrapper">
 
       <!-- Slide 1 -->
       <div
-        class="swiper-slide relative flex items-center justify-center"
+        class="swiper-slide relative flex items-center"
         style="background: url('/images/upload/hero.jpg') center/cover no-repeat;"
       >
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
-          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">{site.tagline}</p>
-          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(13,28,56,0.82) 0%, rgba(13,28,56,0.55) 60%, rgba(0,0,0,0.15) 100%);"></div>
+        <div class="relative z-10 text-white px-8 md:px-16 lg:px-24 max-w-3xl">
+          <span class="inline-block bg-brand-orange text-white text-xs font-bold uppercase tracking-widest px-3 py-1 mb-5 rounded-sm">{site.tagline}</span>
+          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-5 drop-shadow-lg">
             Entreprise tout corps d'état<br />à Goult
           </h1>
-          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
-            Construction, rénovation et aménagement intérieur — dans les 50 km autour de Goult.
+          <p class="text-lg text-gray-200 mb-8 max-w-lg leading-relaxed">
+            Construction, rénovation et aménagement intérieur — dans les 50&nbsp;km autour de Goult.
           </p>
-          <div class="flex flex-wrap gap-4 justify-center">
+          <div class="flex flex-wrap gap-4">
             <a href="/contact" class="btn-primary">Demander un devis gratuit</a>
-            <a href={site.phoneTel} class="btn-outline border-white text-white hover:bg-white hover:text-brand-dark">
+            <a href={site.phoneTel} class="btn-white">
               📞 {site.phone}
             </a>
           </div>
@@ -32,16 +32,16 @@ import { site } from '../data/site';
 
       <!-- Slide 2 -->
       <div
-        class="swiper-slide relative flex items-center justify-center"
+        class="swiper-slide relative flex items-center"
         style="background: url('/images/upload/company-services.jpg') center/cover no-repeat;"
       >
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
-          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">Artisan maçon qualifié</p>
-          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
-            Maçonnerie, électricité,<br />plomberie & plus
+        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(13,28,56,0.82) 0%, rgba(13,28,56,0.55) 60%, rgba(0,0,0,0.15) 100%);"></div>
+        <div class="relative z-10 text-white px-8 md:px-16 lg:px-24 max-w-3xl">
+          <span class="inline-block bg-brand-orange text-white text-xs font-bold uppercase tracking-widest px-3 py-1 mb-5 rounded-sm">Artisan maçon qualifié</span>
+          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-5 drop-shadow-lg">
+            Maçonnerie, électricité,<br />plomberie &amp; plus
           </h2>
-          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
+          <p class="text-lg text-gray-200 mb-8 max-w-lg leading-relaxed">
             Un interlocuteur unique pour tous vos travaux. Particuliers et professionnels.
           </p>
           <a href="/nos-activites" class="btn-primary">Découvrir nos activités</a>
@@ -50,16 +50,16 @@ import { site } from '../data/site';
 
       <!-- Slide 3 -->
       <div
-        class="swiper-slide relative flex items-center justify-center"
+        class="swiper-slide relative flex items-center"
         style="background: url('/images/upload/company-home.jpg') center/cover no-repeat;"
       >
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
-          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">Nos réalisations</p>
-          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+        <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(13,28,56,0.82) 0%, rgba(13,28,56,0.55) 60%, rgba(0,0,0,0.15) 100%);"></div>
+        <div class="relative z-10 text-white px-8 md:px-16 lg:px-24 max-w-3xl">
+          <span class="inline-block bg-brand-orange text-white text-xs font-bold uppercase tracking-widest px-3 py-1 mb-5 rounded-sm">Nos réalisations</span>
+          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-5 drop-shadow-lg">
             Chantiers de rénovation<br />en Provence
           </h2>
-          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
+          <p class="text-lg text-gray-200 mb-8 max-w-lg leading-relaxed">
             Parcourez nos derniers chantiers et découvrez le soin apporté aux finitions.
           </p>
           <a href="/nos-derniers-chantiers" class="btn-primary">Voir nos chantiers</a>

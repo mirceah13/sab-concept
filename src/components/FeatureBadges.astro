@@ -8,21 +8,23 @@ const badges = [
 ];
 ---
 
-<section class="bg-brand-gray py-10 overflow-hidden" aria-label="Points forts">
+<section class="bg-brand-blue py-12 overflow-hidden" aria-label="Points forts">
   <div class="swiper badges-swiper">
     <div class="swiper-wrapper items-center">
-      {badges.concat(badges).map((badge) => (
-        <div class="swiper-slide !w-auto px-8">
+      {badges.concat(badges).map((badge, i) => (
+        <div class="swiper-slide !w-auto px-10">
           <div class="flex flex-col items-center gap-3 text-center select-none">
-            <img
-              src={badge.img}
-              alt={badge.label}
-              width="64"
-              height="64"
-              class="w-16 h-16 object-contain"
-              loading="lazy"
-            />
-            <span class="font-bold uppercase text-sm tracking-wide text-brand-dark">{badge.label}</span>
+            <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center p-2">
+              <img
+                src={badge.img}
+                alt={badge.label}
+                width="48"
+                height="48"
+                class="w-12 h-12 object-contain brightness-200 saturate-0"
+                loading="lazy"
+              />
+            </div>
+            <span class="font-bold uppercase text-sm tracking-widest text-white">{badge.label}</span>
           </div>
         </div>
       ))}

@@ -9,7 +9,10 @@ export default {
         brand: {
           orange: '#e07530',
           dark:   '#1a1a1a',
+          blue:   '#3d5a8e',
+          'blue-dark': '#2d4470',
           gray:   '#f5f5f5',
+          light:  '#fafafa',
         },
       },
       fontFamily: {

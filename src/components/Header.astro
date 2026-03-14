@@ -23,16 +23,17 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header class="sticky top-0 z-50 shadow-lg">
   <!-- Top bar (phone + CTA) -->
-  <div class="bg-brand-dark text-white">
+  <div class="bg-brand-blue-dark text-white">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-2 text-sm">
-      <span class="font-bold tracking-wide">{site.name} &mdash; {site.tagline}</span>
+      <span class="font-semibold tracking-wide text-blue-100">{site.name} &mdash; <span class="text-white/80">{site.tagline}</span></span>
       <div class="flex items-center gap-4">
-        <a href={site.phoneTel} class="font-bold hover:text-brand-orange transition-colors">
-          📞 {site.phone}
+        <a href={site.phoneTel} class="font-bold hover:text-brand-orange transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.7 15.7 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.56 21 3 13.44 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z"/></svg>
+          {site.phone}
         </a>
-        <a href="/contact" class="btn-primary text-xs py-1.5 px-4">
+        <a href="/contact" class="btn-primary text-xs py-1.5 px-4 rounded-sm">
           Demander un devis
         </a>
       </div>
@@ -40,27 +41,62 @@ function isActive(href: string): boolean {
   </div>
 
   <!-- Main nav -->
-  <nav class="max-w-7xl mx-auto px-4" aria-label="Navigation principale">
-    <div class="flex items-center justify-between py-3">
-      <!-- Logo -->
-      <a href="/" class="flex items-center">
-        <img
-          src="/images/upload/logo.png"
-          alt="Sab Concept — Entreprise générale du bâtiment"
-          width="180"
-          height="72"
-          class="h-16 w-auto object-contain"
-          loading="eager"
-        />
-      </a>
+  <nav class="bg-brand-blue" aria-label="Navigation principale">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center flex-shrink-0 py-1">
+          <img
+            src="/images/upload/logo.png"
+            alt="Sab Concept — Entreprise générale du bâtiment"
+            width="180"
+            height="72"
+            class="h-14 w-auto object-contain"
+            loading="eager"
+          />
+        </a>
 
-      <!-- Desktop nav -->
-      <ul class="hidden lg:flex items-center gap-1">
+        <!-- Desktop nav -->
+        <ul class="hidden lg:flex items-center">
+          {navItems.map(item => (
+            <li>
+              <a
+                href={item.href}
+                class={`nav-link px-3 py-5 ${isActive(item.href) ? 'active' : ''}`}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="menu-toggle"
+          class="lg:hidden flex flex-col gap-1.5 p-2"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="block w-6 h-0.5 bg-white transition-all"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all"></span>
+          <span class="block w-6 h-0.5 bg-white transition-all"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <ul
+        id="mobile-menu"
+        class="hidden lg:hidden flex-col border-t border-blue-700 pb-2"
+        role="menu"
+      >
         {navItems.map(item => (
-          <li>
+          <li role="none">
             <a
               href={item.href}
-              class={`nav-link px-3 py-2 ${isActive(item.href) ? 'active' : ''}`}
+              class={`block px-2 py-3 nav-link border-b border-blue-700/50 ${isActive(item.href) ? 'active' : ''}`}
+              role="menuitem"
               aria-current={isActive(item.href) ? 'page' : undefined}
             >
               {item.label}
@@ -68,40 +104,7 @@ function isActive(href: string): boolean {
           </li>
         ))}
       </ul>
-
-      <!-- Mobile hamburger -->
-      <button
-        id="menu-toggle"
-        class="lg:hidden flex flex-col gap-1.5 p-2"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
-        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
-        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
-      </button>
     </div>
-
-    <!-- Mobile menu -->
-    <ul
-      id="mobile-menu"
-      class="hidden lg:hidden flex-col gap-0 border-t border-gray-200 pb-3"
-      role="menu"
-    >
-      {navItems.map(item => (
-        <li role="none">
-          <a
-            href={item.href}
-            class={`block px-2 py-3 nav-link border-b border-gray-100 ${isActive(item.href) ? 'active' : ''}`}
-            role="menuitem"
-            aria-current={isActive(item.href) ? 'page' : undefined}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
   </nav>
 </header>
 
