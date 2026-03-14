@@ -45,6 +45,11 @@ const canonical = canonicalUrl ?? Astro.url.href;
     <link rel="stylesheet" href="/photoswipe/photoswipe.css" />
     <link rel="stylesheet" href="/cc/cookieconsent.css" />
 
+    <!-- Google Analytics 4 — loaded only after analytics consent -->
+    <script is:inline>
+      window.__GA_ID = 'G-XXXXXXXXXX'; // ← Replace with your GA4 Measurement ID
+    </script>
+
     <title>{pageTitle}</title>
   </head>
   <body>

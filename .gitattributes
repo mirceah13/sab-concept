@@ -1,0 +1,15 @@
+# Normalize line endings for the whole project
+* text=auto eol=lf
+
+# Explicitly binary files
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary

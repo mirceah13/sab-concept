@@ -9,6 +9,21 @@
   // Make globally accessible (for footer "Paramètres cookies" button)
   (window as any).CookieConsent = CookieConsent;
 
+  // GA4 loader — fires when analytics consent changes
+  function loadGA(id: string) {
+    if (document.getElementById('ga4-script')) return;
+    const s = document.createElement('script');
+    s.id = 'ga4-script';
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(s);
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    function gtag(...args: any[]) { (window as any).dataLayer.push(args); }
+    (window as any).gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', id, { anonymize_ip: true });
+  }
+
   CookieConsent.run({
     guiOptions: {
       consentModal: {
@@ -86,6 +101,20 @@
           },
         },
       },
+    },
+
+    onConsent({ cookie }) {
+      const gaId = (window as any).__GA_ID;
+      if (gaId && CookieConsent.acceptedCategory('analytics')) {
+        loadGA(gaId);
+      }
+    },
+
+    onChange({ cookie }) {
+      const gaId = (window as any).__GA_ID;
+      if (gaId && CookieConsent.acceptedCategory('analytics')) {
+        loadGA(gaId);
+      }
     },
   });
 </script>
