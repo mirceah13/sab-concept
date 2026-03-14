@@ -1,0 +1,91 @@
+---
+// HeroSlider.astro — Swiper-powered hero with background image, tagline, CTAs
+import { site } from '../data/site';
+---
+
+<section class="relative w-full overflow-hidden" style="height: min(90vh, 700px);" aria-label="Présentation">
+  <div class="swiper hero-swiper h-full">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div
+        class="swiper-slide relative flex items-center justify-center"
+        style="background: url('/images/upload/hero.jpg') center/cover no-repeat;"
+      >
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
+          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">{site.tagline}</p>
+          <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+            Entreprise tout corps d'état<br />à Goult
+          </h1>
+          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
+            Construction, rénovation et aménagement intérieur — dans les 50 km autour de Goult.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a href="/contact" class="btn-primary">Demander un devis gratuit</a>
+            <a href={site.phoneTel} class="btn-outline border-white text-white hover:bg-white hover:text-brand-dark">
+              📞 {site.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div
+        class="swiper-slide relative flex items-center justify-center"
+        style="background: url('/images/upload/company-services.jpg') center/cover no-repeat;"
+      >
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
+          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">Artisan maçon qualifié</p>
+          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+            Maçonnerie, électricité,<br />plomberie & plus
+          </h2>
+          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
+            Un interlocuteur unique pour tous vos travaux. Particuliers et professionnels.
+          </p>
+          <a href="/nos-activites" class="btn-primary">Découvrir nos activités</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div
+        class="swiper-slide relative flex items-center justify-center"
+        style="background: url('/images/upload/company-home.jpg') center/cover no-repeat;"
+      >
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 text-white text-center px-6 max-w-3xl mx-auto">
+          <p class="uppercase tracking-widest text-brand-orange font-bold text-sm mb-3">Nos réalisations</p>
+          <h2 class="text-4xl md:text-6xl font-black leading-tight mb-4">
+            Chantiers de rénovation<br />en Provence
+          </h2>
+          <p class="text-lg text-gray-200 mb-8 max-w-xl mx-auto">
+            Parcourez nos derniers chantiers et découvrez le soin apporté aux finitions.
+          </p>
+          <a href="/nos-derniers-chantiers" class="btn-primary">Voir nos chantiers</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation arrows -->
+    <div class="swiper-button-prev" aria-label="Slide précédent"></div>
+    <div class="swiper-button-next" aria-label="Slide suivant"></div>
+
+    <!-- Pagination dots -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+  new Swiper('.hero-swiper', {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+</script>

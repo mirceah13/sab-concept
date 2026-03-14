@@ -1,0 +1,32 @@
+---
+// SocialShare.astro — Facebook + X share buttons
+interface Props {
+  url: string;
+  title?: string;
+}
+const { url, title = '' } = Astro.props;
+const fbShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+const xShare  = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+---
+
+<div class="flex items-center gap-3 mt-8 pt-6 border-t border-gray-200">
+  <span class="text-sm text-gray-500 font-bold uppercase tracking-wide">Partager :</span>
+  <a
+    href={fbShare}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm px-4 py-2 hover:bg-blue-700 transition-colors"
+    aria-label="Partager sur Facebook"
+  >
+    Facebook
+  </a>
+  <a
+    href={xShare}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-2 bg-gray-800 text-white text-sm px-4 py-2 hover:bg-gray-700 transition-colors"
+    aria-label="Partager sur X (Twitter)"
+  >
+    X
+  </a>
+</div>

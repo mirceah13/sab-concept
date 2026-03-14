@@ -1,0 +1,45 @@
+---
+// Gallery.astro — PhotoSwipe lightbox grid
+interface Props {
+  images: Array<{ src: string; alt: string; width?: number; height?: number }>;
+}
+const { images } = Astro.props;
+---
+
+<div
+  id="gallery"
+  class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"
+  aria-label="Galerie photos"
+>
+  {images.map((img, idx) => (
+    <a
+      href={img.src}
+      data-pswp-width={img.width ?? 1200}
+      data-pswp-height={img.height ?? 800}
+      target="_blank"
+      class="block overflow-hidden aspect-square group"
+      aria-label={`Voir ${img.alt}`}
+    >
+      <img
+        src={img.src}
+        alt={img.alt}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        loading={idx < 8 ? 'eager' : 'lazy'}
+        width={img.width ?? 1200}
+        height={img.height ?? 800}
+      />
+    </a>
+  ))}
+</div>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+  });
+
+  lightbox.init();
+</script>

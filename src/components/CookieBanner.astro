@@ -1,0 +1,91 @@
+---
+// CookieBanner.astro — uses vanilla-cookieconsent v3
+// CSS is loaded in Layout.astro
+---
+
+<script>
+  import * as CookieConsent from 'vanilla-cookieconsent';
+
+  // Make globally accessible (for footer "Paramètres cookies" button)
+  (window as any).CookieConsent = CookieConsent;
+
+  CookieConsent.run({
+    guiOptions: {
+      consentModal: {
+        layout: 'box',
+        position: 'bottom left',
+        equalWeightButtons: false,
+        flipButtons: false,
+      },
+      preferencesModal: {
+        layout: 'box',
+        position: 'right',
+        equalWeightButtons: true,
+        flipButtons: false,
+      },
+    },
+
+    categories: {
+      necessary: {
+        enabled: true,
+        readOnly: true,
+      },
+      analytics: {
+        enabled: false,
+        autoClear: {
+          cookies: [
+            { name: /^_ga/ },
+            { name: '_gid' },
+          ],
+        },
+      },
+    },
+
+    language: {
+      default: 'fr',
+      translations: {
+        fr: {
+          consentModal: {
+            title: 'À propos des cookies',
+            description:
+              'Chers utilisateurs, ce site stocke des cookies sur votre ordinateur. Ils ont pour but d\'améliorer l\'expérience de votre site web, tout en vous fournissant des services plus personnalisés. Les cookies sont également utilisés pour la personnalisation des publicités. Si vous souhaitez plus d\'informations sur les cookies que nous utilisons, veuillez consulter notre <a href="/politique-confidentialite">Politique de confidentialité</a>. En acceptant les cookies, vous consentez à leur utilisation.',
+            acceptAllBtn: 'Tout autoriser',
+            acceptNecessaryBtn: 'Tout refuser',
+            showPreferencesBtn: 'Personnaliser',
+          },
+          preferencesModal: {
+            title: 'Paramètres des cookies',
+            acceptAllBtn: 'Tout autoriser',
+            acceptNecessaryBtn: 'Tout refuser',
+            savePreferencesBtn: 'Sauvegarder',
+            closeIconLabel: 'Fermer',
+            sections: [
+              {
+                title: 'Utilisation des cookies',
+                description:
+                  'Un seul cookie sera utilisé dans votre navigateur pour mémoriser votre préférence de ne pas être suivi.',
+              },
+              {
+                title: 'Cookies strictement nécessaires <span class="pm__badge">Toujours actif</span>',
+                description:
+                  'Ces cookies sont indispensables au bon fonctionnement du site. Ils ne peuvent pas être désactivés.',
+                linkedCategory: 'necessary',
+              },
+              {
+                title: 'Cookies analytiques',
+                description:
+                  'Ces cookies nous permettent de mesurer l\'audience du site et d\'améliorer son contenu.',
+                linkedCategory: 'analytics',
+              },
+              {
+                title: 'Plus d\'informations',
+                description:
+                  'Pour toute question relative à notre politique de cookies, <a href="/contact">contactez-nous</a>.',
+              },
+            ],
+          },
+        },
+      },
+    },
+  });
+</script>

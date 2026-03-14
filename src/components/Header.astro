@@ -1,0 +1,111 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navItems = [
+  { label: 'ACCUEIL',             href: '/' },
+  { label: 'NOS ACTIVITÉS',       href: '/nos-activites' },
+  { label: 'ACTUALITÉS',          href: '/actualites' },
+  { label: 'NOS DERNIERS CHANTIERS', href: '/nos-derniers-chantiers' },
+  { label: 'EN IMAGES',           href: '/en-images' },
+  { label: 'AVIS CLIENTS',        href: '/avis-clients' },
+  { label: 'CONTACT',             href: '/contact' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <!-- Top bar (phone + CTA) -->
+  <div class="bg-brand-dark text-white">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between py-2 text-sm">
+      <span class="font-bold tracking-wide">{site.name} &mdash; {site.tagline}</span>
+      <div class="flex items-center gap-4">
+        <a href={site.phoneTel} class="font-bold hover:text-brand-orange transition-colors">
+          📞 {site.phone}
+        </a>
+        <a href="/contact" class="btn-primary text-xs py-1.5 px-4">
+          Demander un devis
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav class="max-w-7xl mx-auto px-4" aria-label="Navigation principale">
+    <div class="flex items-center justify-between py-3">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 text-xl font-black text-brand-dark tracking-tight">
+        <span class="text-brand-orange">SAB</span> CONCEPT
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden lg:flex items-center gap-1">
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class={`nav-link px-3 py-2 ${isActive(item.href) ? 'active' : ''}`}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden flex flex-col gap-1.5 p-2"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
+        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
+        <span class="block w-6 h-0.5 bg-brand-dark transition-all"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <ul
+      id="mobile-menu"
+      class="hidden lg:hidden flex-col gap-0 border-t border-gray-200 pb-3"
+      role="menu"
+    >
+      {navItems.map(item => (
+        <li role="none">
+          <a
+            href={item.href}
+            class={`block px-2 py-3 nav-link border-b border-gray-100 ${isActive(item.href) ? 'active' : ''}`}
+            role="menuitem"
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+    menu?.classList.toggle('flex');
+  });
+</script>

@@ -1,0 +1,29 @@
+---
+import { services } from '../data/services';
+---
+
+<section class="py-16 bg-white" id="services">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="section-title text-center">Les prestations de notre entreprise tout corps d'état</h2>
+    <p class="text-center text-gray-500 mb-12 max-w-2xl mx-auto">
+      Avec Sab Concept, profitez du savoir-faire d'un artisan maçon tout corps d'état. 
+      <a href="/avis-clients" class="text-brand-orange hover:underline">Consultez les avis clients</a> pour noter la qualité du travail effectué.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <a
+          href={`/nos-activites${service.anchor}`}
+          class="group block border border-gray-200 hover:border-brand-orange p-6 transition-all duration-200 hover:shadow-lg"
+          aria-label={service.title}
+        >
+          <div class="text-4xl mb-3">{service.icon}</div>
+          <h3 class="font-bold text-lg text-brand-dark mb-2 group-hover:text-brand-orange transition-colors">
+            {service.title}
+          </h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

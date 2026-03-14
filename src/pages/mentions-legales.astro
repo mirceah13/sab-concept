@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Mentions légales"
+  description="Mentions légales du site sab-concept.fr — Sab Concept SAS, Goult (84220)."
+>
+  <div class="bg-brand-dark text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-black">Mentions légales</h1>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-16 prose prose-gray prose-headings:font-black prose-h2:text-xl prose-h3:text-lg max-w-none">
+    <h2>Ce site est édité par :</h2>
+    <p>
+      <strong>{site.name} SAS</strong> (Société par actions simplifiée) dont le siège social est sis {site.address} — {site.postalCode} {site.city}.<br />
+      SIRET : {site.siret}<br />
+      N° TVA : {site.tva}<br />
+      Téléphone : <a href={site.phoneTel}>{site.phone}</a><br />
+      Adresse de courrier électronique : <a href={`mailto:${site.email}`}>{site.email}</a><br />
+      Directeur de la publication : {site.director}<br />
+      Responsable du site : {site.director}
+    </p>
+
+    <h2>Ce site est hébergé par :</h2>
+    <p>
+      Netlify, Inc.<br />
+      512 2nd Street, Suite 200<br />
+      San Francisco, CA 94107 — États-Unis<br />
+      <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">https://www.netlify.com</a>
+    </p>
+
+    <h2>Conditions générales d'utilisation</h2>
+
+    <h3>Art. 1 — Conditions d'utilisation</h3>
+    <p>
+      Toute personne qui accède au site <a href={site.siteUrl}>{site.siteUrl}</a> (ci-après le « Site ») s'engage à respecter les
+      présentes conditions générales d'utilisation, qui pourront pour certains services être complétées par des conditions particulières.
+    </p>
+    <p>
+      {site.name} se réserve le droit de modifier et de mettre à jour à tout moment l'accès au Site ainsi que les présentes conditions
+      d'utilisation. Ces modifications et mises à jour s'imposent à l'utilisateur qui doit en conséquence se référer régulièrement à
+      cette rubrique pour vérifier les Conditions Générales en vigueur.
+    </p>
+
+    <h3>Art. 2 — Données personnelles et autres données</h3>
+    <p>
+      2.1 Les données sont exclusivement destinées à {site.name}, à ses filiales ou aux membres de son réseau commercial à des fins
+      d'enquêtes, d'analyses, de communications institutionnelles, d'opérations relatives à la gestion clients ou, si vous en êtes
+      d'accord, de propositions commerciales. Ces informations sont confidentielles et conservées par {site.name}.
+      Conformément à la loi « Informatique et Libertés » du 06/01/78, vous disposez d'un droit d'accès, de rectification et de
+      suppression de ces données ainsi que d'un droit de vous opposer à ce que ces données fassent l'objet d'un traitement en nous
+      contactant par courrier à l'adresse suivante : {site.address} — {site.postalCode} {site.city} ou par e-mail à l'adresse <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <p>
+      Vos demandes devront être signées et accompagnées de la photocopie d'un titre d'identité portant la signature du titulaire.
+    </p>
+    <p>
+      2.2 Conformément à l'article 6 de la Loi du 21 juin 2004 pour la confiance en l'économie numérique, l'hébergeur conservera
+      vos données de connexion, couvertes par le secret professionnel et traitées dans le respect des dispositions légales en matière
+      de données personnelles.
+    </p>
+
+    <h3>Art. 3 — Liens hypertextes</h3>
+    <p>
+      Si vous souhaitez mettre en place un lien hypertexte vers notre Site, vous devez en conséquence prendre contact avec le
+      Responsable du Site. {site.name} ne peut en aucun cas être tenue pour responsable du contenu des sites qui font l'objet d'un
+      lien hypertexte à partir du présent Site.
+    </p>
+
+    <h3>Art. 4 — Cookies</h3>
+    <p>
+      Lors de la navigation sur le Site, des cookies sont implantés dans votre ordinateur. Un cookie ne nous permet pas de vous
+      identifier : en revanche, il enregistre des informations relatives à la navigation de votre ordinateur sur notre Site (les
+      pages que vous avez consultées, la date et l'heure de la consultation, etc.) que nous pourrons lire lors de vos visites
+      ultérieures. La durée de conservation de ces informations dans votre ordinateur est de six mois.
+    </p>
+    <p>
+      Vous pouvez à tout moment paramétrer vos préférences en matière de cookies en cliquant sur « Paramètres cookies » en
+      bas de chaque page de notre site.
+    </p>
+
+    <h3>Art. 5 — Contenu du Site</h3>
+    <p>
+      {site.name} s'efforce d'assurer l'exactitude et la mise à jour régulière des informations diffusées sur ce Site. {site.name}
+      se réserve le droit de corriger et modifier à tout moment le contenu du Site sans que sa responsabilité puisse être engagée
+      de ce fait.
+    </p>
+
+    <h3>Art. 6 — Contenu manifestement illicite</h3>
+    <p>
+      Conformément à la loi du 21 juin 2004 pour la confiance dans l'économie numérique, vous pouvez alerter l'hébergeur de la
+      présence d'un contenu que vous considérez comme illicite. L'hébergeur appréciera le caractère illicite des contenus portés
+      à sa connaissance.
+    </p>
+
+    <h3>Art. 7 — Droit applicable</h3>
+    <p>
+      Les présentes Conditions Générales d'utilisation sont soumises au droit interne français.
+    </p>
+  </article>
+</Layout>

@@ -1,0 +1,38 @@
+---
+// NewsCard.astro — reusable card for chantiers AND actualites
+interface Props {
+  title: string;
+  date: string;
+  excerpt: string;
+  thumbnail: string;
+  href: string;
+}
+
+const { title, date, excerpt, thumbnail, href } = Astro.props;
+---
+
+<article class="group flex flex-col bg-white border border-gray-200 hover:border-brand-orange hover:shadow-lg transition-all duration-200 overflow-hidden">
+  <a href={href} class="block overflow-hidden aspect-video">
+    <img
+      src={thumbnail}
+      alt={title}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+      width="400"
+      height="250"
+    />
+  </a>
+  <div class="p-5 flex flex-col flex-1">
+    <time class="text-xs text-gray-400 mb-2">{date}</time>
+    <h3 class="font-bold text-base text-brand-dark group-hover:text-brand-orange transition-colors mb-2 leading-snug">
+      <a href={href}>{title}</a>
+    </h3>
+    <p class="text-sm text-gray-500 leading-relaxed flex-1">{excerpt}</p>
+    <a
+      href={href}
+      class="mt-4 inline-block text-sm font-bold text-brand-orange uppercase tracking-wide hover:underline"
+    >
+      Lire Plus →
+    </a>
+  </div>
+</article>

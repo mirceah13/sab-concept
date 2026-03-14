@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Politique de confidentialité"
+  description="Politique de confidentialité et protection des données personnelles — Sab Concept."
+>
+  <div class="bg-brand-dark text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-black">Politique de confidentialité</h1>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-16 prose prose-gray prose-headings:font-black max-w-none">
+    <h2>Art. 1 — Règles de confidentialité</h2>
+    <p>
+      Le règlement général sur la protection des données du 27 avril 2016 (ci-après le RGPD) est d'application à partir du
+      25 mai 2018. Il impose des règles et conditions strictes aux entreprises et commerçants dans le cadre du traitement des
+      données à caractère personnel de leurs clients et prospects, afin de protéger la vie privée de ceux-ci. À travers la
+      présente, nous entendons vous communiquer des informations claires et précises concernant le traitement de vos données
+      à caractère personnel.
+    </p>
+
+    <h2>Art. 2 — Le responsable du traitement</h2>
+    <p>
+      Le « responsable du traitement » de vos données à caractère personnel est le responsable du site que vous avez utilisé
+      et auquel vous avez communiqué des données : {site.name}, {site.address}, {site.postalCode} {site.city} —
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+
+    <h2>Art. 3 — Bases légales du traitement des données et utilisation</h2>
+    <p>
+      Nous ne pouvons utiliser vos données à caractère personnel qu'à des fins à la fois légitimes et nécessaires (art. 6 du RGPD).
+      Ces finalités sont notamment, mais pas seulement, les suivantes :
+    </p>
+    <ul>
+      <li>Communication d'informations, offres et prospection ;</li>
+      <li>Communications dans le cadre de l'exécution d'un contrat.</li>
+    </ul>
+
+    <h2>Art. 4 — Qu'est-ce qu'une donnée à caractère personnel ?</h2>
+    <p>
+      Les données à caractère personnel incluent toutes les informations qui vous concernent et sur base desquelles vous pouvez
+      être identifié. Vos données à caractère personnel peuvent comprendre :
+    </p>
+    <ul>
+      <li>Données relatives à votre identité (nom, prénom, adresse, etc.) ;</li>
+      <li>Données de statut personnel (numéro de téléphone, e-mail personnel, etc.) ;</li>
+      <li>Données financières (numéro de compte bancaire, détails de facturation, etc.) ;</li>
+      <li>Données relatives à l'exécution du contrat conclu avec nous ;</li>
+      <li>Données relatives à l'utilisation d'équipement électronique (logs, données d'identification, etc.).</li>
+    </ul>
+    <p>
+      Le traitement de données révélant l'origine raciale ou ethnique, les opinions politiques, les convictions religieuses ou
+      philosophiques est strictement interdit. Nous nous engageons à respecter cette interdiction.
+    </p>
+
+    <h2>Art. 5 — Sources et origines des données à caractère personnel</h2>
+    <p>
+      En principe, les données que nous possédons proviennent directement de vous, via les formulaires de contact ou d'avis de
+      notre site.
+    </p>
+
+    <h2>Art. 6 — Accès aux données à caractère personnel</h2>
+    <p>
+      Vos données sont essentiellement à usage interne. Pour certains motifs légitimes, vos données à caractère personnel peuvent
+      être communiquées par des tierces parties. Nous veillerons toutefois au respect de la réglementation RGPD par nos
+      sous-traitants.
+    </p>
+
+    <h2>Art. 7 — Durée de conservation des données</h2>
+    <p>
+      Nous mettons les moyens nécessaires en œuvre afin d'assurer que la conservation des données à caractère personnel pour les
+      finalités décrites ci-dessus n'outrepasse pas les durées légales.
+    </p>
+
+    <h2>Art. 8 — Quels sont vos droits ?</h2>
+    <p>Nous nous engageons à prendre les mesures appropriées afin de garantir la sécurité du traitement de vos données.</p>
+    <ul>
+      <li><strong>Droit d'accès (Art. 15 du RGPD) :</strong> vous pouvez accéder à vos propres données personnelles.</li>
+      <li><strong>Droit de rectification (Art. 16 RGPD) :</strong> vous pouvez demander la rectification de données erronées.</li>
+      <li><strong>Droit à l'oubli (Art. 17 RGPD) :</strong> vous pouvez demander l'effacement de vos données dans les cas prévus par la loi.</li>
+      <li><strong>Droit d'introduire une réclamation (Art. 77 GDPR) :</strong> vous pouvez à tout moment introduire une réclamation auprès de la CNIL.</li>
+    </ul>
+
+    <h2>Art. 9 — Notre engagement</h2>
+    <p>
+      Nous avons pour objectif de mettre en œuvre des techniques de sécurité afin de protéger les données stockées contre les
+      accès non autorisés, les usages inappropriés, les altérations et la destruction illicite.
+    </p>
+
+    <h2>Art. 10 — Procédure en cas de violations</h2>
+    <p>
+      Lorsque la violation présente un risque élevé pour les droits et libertés de la personne, nous l'informerons immédiatement
+      des faits et mesures. Nous nous assurerons de la notification à la CNIL dans les 72 heures.
+    </p>
+
+    <h2>Art. 11 — Consentement</h2>
+    <p>
+      Vous donnez votre consentement exprès, éclairé et univoque en vue du traitement des données à caractère personnel telles que
+      décrites dans la présente Politique de confidentialité. Vous avez le droit de retirer votre consentement à tout moment,
+      sur simple demande écrite adressée à : <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+
+    <hr />
+    <p class="text-sm text-gray-400">
+      Conformément à la loi « informatique et libertés » n°2014-344 du 17 mars 2014, vous pouvez exercer votre droit d'accès
+      en vous inscrivant sur la liste d'opposition au démarchage téléphonique
+      <a href="https://www.bloctel.gouv.fr/" target="_blank" rel="noopener noreferrer">« Bloctel »</a>.
+    </p>
+  </article>
+</Layout>

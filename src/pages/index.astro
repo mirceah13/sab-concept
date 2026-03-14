@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import HomeIntro from '../components/HomeIntro.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import FeatureBadges from '../components/FeatureBadges.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { chantiers } from '../data/chantiers';
+import { actualites } from '../data/actualites';
+
+// Latest 4 chantiers + 2 actualites for the feed
+const latestChantiers = chantiers.slice(0, 4);
+const latestActualites = actualites.slice(0, 2);
+---
+
+<Layout
+  title="Entreprise tout corps d'état à Goult"
+  description="Sab Concept, votre entreprise tout corps d'état à Goult. Construction, rénovation, maçonnerie, électricité, plomberie dans les 50 km autour de Goult (84220)."
+>
+  <!-- Hero Slider -->
+  <HeroSlider />
+
+  <!-- Feature Badges scrolling carousel -->
+  <FeatureBadges />
+
+  <!-- Company intro -->
+  <HomeIntro />
+
+  <!-- Services grid -->
+  <ServicesGrid />
+
+  <!-- Latest Chantiers -->
+  <section class="py-16 bg-brand-gray">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="section-title mb-0">Nos derniers chantiers</h2>
+        <a href="/nos-derniers-chantiers" class="btn-outline text-sm">VOIR +</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {latestChantiers.map(c => (
+          <NewsCard
+            title={c.title}
+            date={c.date}
+            excerpt={c.excerpt}
+            thumbnail={c.thumbnail}
+            href={`/chantiers/${c.slug}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Actualités -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-10">
+        <h2 class="section-title mb-0">Actualités</h2>
+        <a href="/actualites" class="btn-outline text-sm">VOIR +</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+        {latestActualites.map(a => (
+          <NewsCard
+            title={a.title}
+            date={a.date}
+            excerpt={a.excerpt}
+            thumbnail={a.image}
+            href={`/actualites/${a.slug}`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section
+    class="py-20 relative text-white text-center"
+    style="background: url('/images/upload/hero.jpg') center/cover no-repeat;"
+  >
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-black mb-4">Un projet de construction ou de rénovation ?</h2>
+      <p class="text-gray-200 mb-8">
+        Contactez-nous pour un rendez-vous et recevez votre devis gratuit dans les meilleurs délais.
+      </p>
+      <a href="/contact" class="btn-primary text-base px-8 py-4">Demander un devis gratuit</a>
+    </div>
+  </section>
+</Layout>

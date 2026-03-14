@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+import SocialShare from '../components/SocialShare.astro';
+
+const galleryImages = [
+  // Gallery 16 — General photos
+  { src: '/images/gallery/16/31.jpg',  alt: 'Sab Concept — Goult — Rénovation' },
+  { src: '/images/gallery/16/32.jpg',  alt: 'Sab Concept — Goult — Travaux intérieurs' },
+  { src: '/images/gallery/16/33.jpg',  alt: 'Sab Concept — Goult — Maçonnerie' },
+  { src: '/images/gallery/16/82.jpg',  alt: 'Sab Concept — Réalisations' },
+  { src: '/images/gallery/16/83.jpg',  alt: 'Sab Concept — Travaux de rénovation' },
+  { src: '/images/gallery/16/84.jpg',  alt: 'Sab Concept — Aménagement intérieur' },
+  { src: '/images/gallery/16/85.jpg',  alt: 'Sab Concept — Peinture et revêtements' },
+  { src: '/images/gallery/16/86.jpg',  alt: 'Sab Concept — Carrelage' },
+  { src: '/images/gallery/16/87.jpg',  alt: 'Sab Concept — Menuiserie' },
+  { src: '/images/gallery/16/88.jpg',  alt: 'Sab Concept — Électricité et plomberie' },
+  // Chantier terrasse gallery
+  { src: '/images/gallery/35/40.jpg',  alt: 'Rénovation terrasse à Apt' },
+  { src: '/images/gallery/35/37.jpg',  alt: 'Rénovation terrasse — muret en pierre sèche' },
+  { src: '/images/gallery/35/36.jpg',  alt: 'Rénovation terrasse — dalle béton' },
+  { src: '/images/gallery/35/38.jpg',  alt: 'Rénovation terrasse — carrelage extérieur' },
+  { src: '/images/gallery/35/39.jpg',  alt: 'Rénovation terrasse — barrière fer forgé' },
+];
+---
+
+<Layout
+  title="En images — Travaux de rénovation"
+  description="Parcourez les photos de nos travaux de rénovation réalisés à Goult et sa région : électricité, plomberie, peinture, carrelage…"
+>
+  <!-- Page Hero -->
+  <div class="bg-brand-dark text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-black">En images</h1>
+    <p class="mt-3 text-gray-300">Photos de nos travaux de rénovation</p>
+  </div>
+
+  <!-- Intro -->
+  <section class="max-w-4xl mx-auto px-4 py-10 text-center">
+    <p class="text-lg text-gray-600 leading-relaxed">
+      Parcourez les photos de nos travaux de rénovation de maisons réalisés sur Goult et sa région. Retrouvez ainsi en images
+      quelques-uns de nos chantiers : électricité, plomberie, peinture, carrelage… Nous restons disponibles pour tout complément
+      d'informations au sujet des prestations proposées par notre entreprise tout corps d'état.
+    </p>
+  </section>
+
+  <!-- PhotoSwipe Gallery -->
+  <section class="max-w-7xl mx-auto px-4 pb-16">
+    <Gallery images={galleryImages} />
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4">
+    <SocialShare url={Astro.url.href} title="En images — Sab Concept" />
+  </div>
+</Layout>

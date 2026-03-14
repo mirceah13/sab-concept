@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-800 bg-white;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-brand-orange text-white font-bold px-6 py-3 uppercase tracking-wide hover:bg-orange-600 transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-block border-2 border-brand-orange text-brand-orange font-bold px-6 py-3 uppercase tracking-wide hover:bg-brand-orange hover:text-white transition-colors duration-200;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-brand-dark mb-6 uppercase tracking-wide;
+  }
+
+  .nav-link {
+    @apply text-sm font-bold uppercase tracking-widest text-brand-dark hover:text-brand-orange transition-colors duration-200;
+  }
+
+  .nav-link.active {
+    @apply text-brand-orange;
+  }
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet-active {
+  background: #e07530 !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #e07530 !important;
+}
+
+/* Cookie consent overrides */
+#cc-main .cm__btn.cm__btn--primary {
+  background: #e07530 !important;
+  border-color: #e07530 !important;
+}
+#cc-main .cm__btn:hover {
+  opacity: 0.9;
+}
+
+/* Photoswipe */
+.pswp {
+  z-index: 9999;
+}

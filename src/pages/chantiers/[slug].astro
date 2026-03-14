@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+import SocialShare from '../../components/SocialShare.astro';
+import { chantiers, type Chantier } from '../../data/chantiers';
+
+export async function getStaticPaths() {
+  return chantiers.map((c) => ({
+    params: { slug: c.slug },
+    props: { chantier: c },
+  }));
+}
+
+interface Props {
+  chantier: Chantier;
+}
+
+const { chantier } = Astro.props;
+
+const galleryImages = chantier.gallery.map((src) => ({
+  src,
+  alt: chantier.title,
+  width: 1200,
+  height: 800,
+}));
+
+// Previous / Next navigation
+const idx = chantiers.findIndex((c) => c.slug === chantier.slug);
+const prev = chantiers[idx - 1];
+const next = chantiers[idx + 1];
+---
+
+<Layout
+  title={chantier.title}
+  description={chantier.excerpt}
+  image={chantier.thumbnail}
+>
+  <!-- Page hero with main image -->
+  <div
+    class="relative py-24 text-white text-center"
+    style={`background: url('${chantier.thumbnail}') center/cover no-repeat;`}
+  >
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 px-4">
+      <p class="text-sm uppercase tracking-widest text-brand-orange font-bold mb-2">Nos chantiers</p>
+      <h1 class="text-3xl md:text-5xl font-black">{chantier.title}</h1>
+      <time class="block mt-3 text-gray-300">{chantier.date}</time>
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Main content -->
+    <div
+      class="prose prose-gray prose-headings:font-black max-w-none text-gray-700 leading-relaxed mb-10"
+      set:html={chantier.content}
+    />
+
+    <!-- Gallery if exists -->
+    {galleryImages.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-xl font-black text-brand-dark mb-6">Photos du chantier</h2>
+        <Gallery images={galleryImages} />
+      </section>
+    )}
+
+    <!-- Back link -->
+    <a href="/nos-derniers-chantiers" class="inline-flex items-center gap-2 text-brand-orange hover:underline font-bold">
+      ← Retour aux chantiers
+    </a>
+
+    <!-- Prev / Next -->
+    {(prev || next) && (
+      <nav class="flex justify-between mt-8 pt-6 border-t border-gray-200 gap-4" aria-label="Navigation chantiers">
+        {prev ? (
+          <a href={`/chantiers/${prev.slug}`} class="text-sm text-gray-500 hover:text-brand-orange transition-colors max-w-xs">
+            ← {prev.title}
+          </a>
+        ) : <span />}
+        {next && (
+          <a href={`/chantiers/${next.slug}`} class="text-sm text-gray-500 hover:text-brand-orange transition-colors max-w-xs text-right">
+            {next.title} →
+          </a>
+        )}
+      </nav>
+    )}
+
+    <SocialShare url={Astro.url.href} title={chantier.title} />
+  </article>
+</Layout>

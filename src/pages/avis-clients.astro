@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialShare from '../components/SocialShare.astro';
+---
+
+<Layout
+  title="Les avis sur votre artisan maçon tout corps d'état"
+  description="Consultez les avis clients sur Sab Concept, artisan maçon à Goult. Partagez votre expérience !"
+>
+  <!-- Page Hero -->
+  <div class="bg-brand-dark text-white py-16 text-center">
+    <h1 class="text-4xl md:text-5xl font-black">Avis clients</h1>
+    <p class="mt-3 text-gray-300">Votre opinion nous importe</p>
+  </div>
+
+  <section class="max-w-3xl mx-auto px-4 py-16">
+    <p class="text-lg text-gray-600 leading-relaxed mb-10">
+      Consultez les avis sur votre artisan maçon de Goult pour noter la qualité des prestations proposées par l'entreprise
+      tout corps d'état Sab Concept. Vous êtes déjà client de la société ? Déposez un témoignage pour partager vos appréciations !
+    </p>
+
+    <!-- Review form -->
+    <div class="border border-gray-200 p-8">
+      <h2 class="text-xl font-black text-brand-dark mb-6">Laisser un avis</h2>
+
+      <form
+        name="avis"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="space-y-5"
+      >
+        <p class="hidden"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+        <input type="hidden" name="form-name" value="avis" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="avis-nom" class="block text-sm font-bold text-gray-700 mb-1">Votre nom *</label>
+            <input
+              type="text"
+              id="avis-nom"
+              name="nom"
+              required
+              class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-brand-orange"
+            />
+          </div>
+          <div>
+            <label for="avis-note" class="block text-sm font-bold text-gray-700 mb-1">Votre note *</label>
+            <div class="flex gap-2 items-center mt-2" id="star-rating">
+              {[1,2,3,4,5].map(n => (
+                <button
+                  type="button"
+                  data-value={n}
+                  class="star-btn text-3xl text-gray-300 hover:text-yellow-400 transition-colors focus:outline-none"
+                  aria-label={`${n} étoile${n > 1 ? 's' : ''}`}
+                >
+                  ★
+                </button>
+              ))}
+              <input type="hidden" name="note" id="note-value" value="" required />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="avis-message" class="block text-sm font-bold text-gray-700 mb-1">Votre avis *</label>
+          <textarea
+            id="avis-message"
+            name="message"
+            rows="5"
+            required
+            class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-brand-orange resize-y"
+          ></textarea>
+        </div>
+
+        <div class="flex items-start gap-2">
+          <input type="checkbox" id="avis-rgpd" name="rgpd" required class="mt-1 accent-brand-orange" />
+          <label for="avis-rgpd" class="text-sm text-gray-600">
+            J'ai lu et j'accepte les
+            <a href="/politique-confidentialite" class="text-brand-orange hover:underline">
+              conditions générales d'utilisation
+            </a> *
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Envoyer mon avis
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <div class="max-w-3xl mx-auto px-4">
+    <SocialShare url={Astro.url.href} title="Avis clients — Sab Concept" />
+  </div>
+</Layout>
+
+<script>
+  const starBtns = document.querySelectorAll<HTMLButtonElement>('.star-btn');
+  const noteInput = document.querySelector<HTMLInputElement>('#note-value');
+
+  starBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const val = Number(btn.dataset.value);
+      if (noteInput) noteInput.value = String(val);
+      starBtns.forEach((b) => {
+        const bVal = Number(b.dataset.value);
+        b.classList.toggle('text-yellow-400', bVal <= val);
+        b.classList.toggle('text-gray-300', bVal > val);
+      });
+    });
+  });
+</script>
